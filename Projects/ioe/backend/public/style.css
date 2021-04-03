@@ -1,0 +1,10 @@
+.myContainer{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    height: 100%;
+    width: 100%;
+    margin: 1rem;
+    margin-top:10vh;
+    flex-direction: row;   
+}

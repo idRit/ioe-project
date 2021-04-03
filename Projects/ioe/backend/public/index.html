@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="socketio-client.js"></script>
+
+    <script src="socket-io-map.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="myContainer">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Parking Spot 1</h5>
+
+          <a href="#" class="btn btn-primary" id="spotA">Available</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Parking Spot 2</h5>
+
+          <a href="#" class="btn btn-primary" id="spotB">Available</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Parking Spot 3</h5>
+
+          <a href="#" class="btn btn-primary" id="spotC">Available</a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    var socket = io();
+    socket.on("connect", (socket) => {
+      console.log("connected to server");
+    });
+
+    socket.on("ps", (spotName) => {
+      switch (spotName) {
+        case "a":
+          if ($("#spotA").text() == "Un-Available") {
+            $("#spotA").text("Available");
+            $("#spotA").attr("class", "btn btn-primary");
+          } else {
+            $("#spotA").text("Un-Available");
+            $("#spotA").attr("class", "btn btn-danger");
+          }
+
+          // code block
+          break;
+        case "b":
+        if ($("#spotB").text() == "Un-Available") {
+            $("#spotB").text("Available");
+            $("#spotB").attr("class", "btn btn-primary");
+          } else {
+            $("#spotB").text("Un-Available");
+            $("#spotB").attr("class", "btn btn-danger");
+          }
+          // code block
+          break;
+        case "c":
+        if ($("#spotC").text() == "Un-Available") {
+            $("#spotC").text("Available");
+            $("#spotC").attr("class", "btn btn-primary");
+          } else {
+            $("#spotC").text("Un-Available");
+            $("#spotC").attr("class", "btn btn-danger");
+          }
+          // code block
+          break;
+        default:
+        // code block
+      }
+    });
+  </script>
+</html>
